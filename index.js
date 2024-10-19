@@ -5,7 +5,7 @@ const app = express(); // Changed `index` to `app` for clarity
 
 
 //configure mongoose to connect to mongodb
-mongoose.connect('mongodb://27017/cms_project', { useNewUrlParser: true})
+mongoose.connect('mongodb://localhost:27017/cms_project', { useNewUrlParser: true})
      .then(response => {
         console.log("MongoDB connected successfully.");
      }).catch(err =>{
@@ -20,9 +20,9 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 
 /*Routes */
-app.use('/', (req, res)=> {
-    res.send("Welcome the CMS App");
-})
+app.get('/', (req, res) => {
+    res.send("Welcome to the CMS App");
+});
 app.listen(3000, () => {
     console.log("Server is running on port 3000");
 });
